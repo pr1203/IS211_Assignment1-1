@@ -1,19 +1,28 @@
+def listDivide(numbers, divide = 2):
+    divisibleCount = 0
+    for allNum in numbers:
+        if allNum % divide == 0:
+            divisibleCount += 1
 
-def list_divide(numbers, divide):
-    """
-    The function returns the number of elements in the numbers list that are divisibleby divide
-    """
-    pass
+    return divisibleCount
 
-def test_list_divide():
-    """
-    Test listDivide
-    """
-    assert listDivide([1,2,3,4,5]) == 2
-    assert listDivide([2,4,6,8,10]) == 5
-    assert listDivide([30, 54, 63,98, 100], divide=10) == 2
-    assert listDivide([]) == 0
-    assert listDivide([1,2,3,4,5], 1) == 5
-    
-if __name__ == "__main__":
+    class ListDivideException(Exception):
+        pass
+
+    def testListDivide():
+        try:
+            if not listDivide([1, 2, 3, 4, 5]) == 2:
+                raise ListDivideException
+            if not listDivide([2, 4, 6, 8, 10]) == 5:
+                raise ListDivideException
+            if not listDivide([30, 54, 63, 98, 100], divide=10) == 2:
+                raise ListDivideException
+            if not listDivide([]) == 0:
+                raise ListDivideException
+            if not listDivide([1, 2, 3, 4, 5], 1) == 5:
+                raise ListDivideException
+            print("All test cases passed")
+        except ListDivideException:
+            print("Division exception occured")
+
     testListDivide()
